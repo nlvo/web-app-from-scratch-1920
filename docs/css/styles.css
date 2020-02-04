@@ -1,0 +1,22 @@
+body {
+	background-color: #F0F2F5;
+	font-family: 'Noto Sans';
+}
+
+h2 {
+	font-size: 1em;
+}
+
+section {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+article {
+	padding: 1em;
+}
+
+img {
+	border-radius: 0.25em;
+	width: 100%;
+}
