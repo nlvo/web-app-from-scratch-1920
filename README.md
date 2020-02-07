@@ -1,11 +1,11 @@
-# Web app Superheroes
+# Web app Marvel Characters
 [live demo link](https://nlvo.github.io/web-app-from-scratch-1920/)
 
 ## Installation
 1. Clone or download the repository
 `$ git clone https://nlvo.github.io/web-app-from-scratch-1920/`
 
-[TVMAZE API](https://www.tvmaze.com/api)
+[Marvel API](https://developer.marvel.com/)
 
 ### License
 Copyright © 2019, [Lien Vo](https://github.com/nlvo) . Released under the [MIT license](https://github.com/nlvo/web-app-from-scratch-1920/blob/master/LICENSE).
