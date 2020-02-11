@@ -2,8 +2,9 @@ const endpointMarvel = 'https://gateway.marvel.com/v1/public/';
 const apiKey = '&apikey=22b5f2403c91db4fba23cad90a8b2ab7';
 const hash = '&hash=e6bb9dbff35775d2d8aed171d44888d4';
 const timestamp = 'ts=1581025873';
-const comicsUrl = `${endpointMarvel}comics?${timestamp}${apiKey}${hash}`;
-// const charactersUrl = `${endpointMarvel}characters?${timestamp}${apiKey}${hash}`;
+const category = 'characters';
+const marvelUrl = `${endpointMarvel}${category}?${timestamp}${apiKey}${hash}`;
+var data;
 
 const getJsonData = (url) => {
     fetch(url)
@@ -12,15 +13,23 @@ const getJsonData = (url) => {
         }).then(jsonData => {
             addHtmlElement(jsonData, 'characters');
             addHtmlElement(jsonData, 'comics');
+            data = jsonData.data.results;
         });
 }
 
     // https://superheroapi.com/api/1776314525838688/search/
 
+const getDetail = (id) => {
+    const detail = data.filter(data => data.id == id);
+    detail = detail[0];
+    // https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d
+    console.log(detail[0]);
+}
+
 const addHtmlElement = (jsonData, selector) => {
     jsonData = jsonData.data.results;
+
     for (const comic of jsonData) {
-        console.log(comic);
         className = `.${selector}`;
         const section = document.querySelector(className);
         const article = document.createElement('article');
@@ -29,8 +38,9 @@ const addHtmlElement = (jsonData, selector) => {
         const articleUrl = document.createElement('a');
 
         heading.textContent = `${comic.hasOwnProperty('title') ? comic.title : ''}`;
-        articleUrl.textContent = `${comic.hasOwnProperty('title') ? comic.title : ''}`;
-        heading.textContent = `${comic.hasOwnProperty('name') ? comic.name : ''}`;
+        // articleUrl.textContent = `${comic.hasOwnProperty('title') ? comic.title : ''}`;
+        articleUrl.textContent = `${comic.hasOwnProperty('name') ? comic.name : ''}`;
+        // heading.textContent = `${comic.hasOwnProperty('name') ? comic.name : ''}`;
 
         articleImage.src = `${comic.thumbnail.path}.${comic.thumbnail.extension}`; //template literals
         articleUrl.href = `#characters/${comic.id}`;
@@ -45,13 +55,13 @@ const addHtmlElement = (jsonData, selector) => {
 routie({
     '' : function(){
         console.log('bleh');
-        getJsonData(comicsUrl);
+        getJsonData(marvelUrl);
     },
     'characters' : function(){
 
     },
     'characters/:id' : function (id){
-        console.log(id);
-
+        getDetail(id);
+        // console.log(id);
     }
 })
