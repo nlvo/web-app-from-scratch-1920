@@ -1,25 +1,23 @@
 :root {
-	--concrete-000: #FFFFFF;
-	--concrete-100: #F0F1F2;
-	--concrete-200: #D9DCE0;
-	--concrete-300: #C1C7CD;
-	--concrete-400: #939DA7;
-	--concrete-500: #657381;
-	--concrete-600: #5B6874;
-	--concrete-700: #3D454D;
-	--concrete-800: #2D343A;
-	--concrete-900: #1E2327;
+	--grey-100: #EEEFF0;
+	--grey-200: #D4D7D9;
+	--grey-300: #BABFC3;
+	--grey-400: #868E95;
+	--grey-500: #525E68;
+	--grey-600: #4A555E;
+	--grey-700: #31383E;
+	--grey-800: #252A2F;
+	--grey-900: #151515;
 
-	--marvel-100: #FDE8E9;
-	--marvel-200: #FBC7C8;
-	--marvel-300: #F8A5A7;
-	--marvel-400: #F26166;
-	--marvel-500: #ED1D24;
-	--marvel-600: #D51A20;
-	--marvel-700: #8E1116;
-	--marvel-800: #6B0D10;
-	--marvel-900: #47090B;
-
+	--marvel-100: #FDE9EA;
+	--marvel-200: #F9C8CA;
+	--marvel-300: #F5A7A9;
+	--marvel-400: #EE6669;
+	--marvel-500: #E62429;
+	--marvel-600: #CF2025;
+	--marvel-700: #8A1619;
+	--marvel-800: #681012;
+	--marvel-900: #450B0C;
 }
 
 body {
@@ -41,6 +39,20 @@ header img {
 	width: 3em;
 }
 
+nav ul{
+	display: flex;
+}
+
+nav ul li:first-child {
+	display: flex;
+}
+
+nav ul li {
+	align-self: center;
+	padding-right: 1em;
+	list-style-type: none;
+}
+
 h2 {
 	font-size: 1em;
 }
@@ -49,6 +61,10 @@ section {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
+}
+
+section header {
+	align-self:stretch
 }
 
 .characters img {
