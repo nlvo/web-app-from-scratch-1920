@@ -5,23 +5,22 @@ const timestamp = 'ts=1581025873';
 const category = 'comics';
 const query = 'dateDescriptor=thisMonth&orderBy=onsaleDate&limit=10'
 const marvelUrl = `${endpointMarvel}${category}?${query}&${timestamp}&${apiKey}&${hash}`;
-// var data;
+var data;
 
 const getJsonData = (url) => {
     fetch(url)
         .then(response => {
             return response.json();
         }).then(jsonData => {
-            const cleanedData = cleanData(jsonData);
-            addHtmlElement(cleanedData, 'comics');
-            // data = jsonData.data.results;
+            data = cleanData(jsonData);
+            addHtmlElement(data, 'comics');
         });
 }
 // https://superheroapi.com/api/1776314525838688/search/
 
 const getDetail = (id) => {
-    const detail = data.filter(data => data.id == id);
-    detail = detail[0];
+    var detail = data.filter(data => data.id == id);
+    // detail = detail[0];
     // https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d
     console.log(detail);
 }
