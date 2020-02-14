@@ -32,10 +32,10 @@ For more information you can refer to the [Marvel API documentation](https://dev
 
 ## Aplication
 ### Actor Diagram
-![Actor-Diagram-Marvel](https://user-images.githubusercontent.com/8554238/74510815-d7f76680-4f04-11ea-915b-4276cb06d161.png)
+![Actor-Diagram-Marvel](https://user-images.githubusercontent.com/8554238/74510825-db8aed80-4f04-11ea-8c2b-5ab86841990c.png)
 
 ### Interaction Diagram
-![Interaction-Diagram-Marvel](https://user-images.githubusercontent.com/8554238/74510825-db8aed80-4f04-11ea-8c2b-5ab86841990c.png)
+![Interaction-Diagram-Marvel](https://user-images.githubusercontent.com/8554238/74510815-d7f76680-4f04-11ea-915b-4276cb06d161.png)
 
 ## ToDo
 Things I would like to add can be found in with a label __todo__
