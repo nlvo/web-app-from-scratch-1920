@@ -13,7 +13,6 @@ const getJsonData = (url) => {
             return response.json();
         }).then(jsonData => {
             const cleanedData = cleanData(jsonData);
-            addHtmlElement(cleanedData, 'characters');
             addHtmlElement(cleanedData, 'comics');
             // data = jsonData.data.results;
         });
@@ -51,13 +50,13 @@ const addHtmlElement = (jsonData, selector) => {
         const articleImage = document.createElement('img');
         const articleUrl = document.createElement('a');
 
-        heading.textContent = `${comic.hasOwnProperty('name') ? comic.name : ''}`;
+        // heading.textContent = `${comic.hasOwnProperty('name') ? comic.name : ''}`;
         articleUrl.textContent = `${comic.hasOwnProperty('name') ? comic.name : ''}`;
 
         articleImage.src = `${comic.thumbnail.path}.${comic.thumbnail.extension}`; //template literals
         articleUrl.href = `#characters/${comic.id}`;
 
-        article.appendChild(articleUrl);
+        heading.appendChild(articleUrl);
         article.appendChild(articleImage);
         article.appendChild(heading);
         section.appendChild(article);
@@ -67,6 +66,9 @@ const addHtmlElement = (jsonData, selector) => {
 routie({
     '' : function(){
         getJsonData(marvelUrl);
+    },
+    'characters' : function () {
+
     },
     'characters/:id' : function (id){
         getDetail(id);

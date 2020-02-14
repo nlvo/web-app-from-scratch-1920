@@ -1,4 +1,5 @@
 :root {
+	--grey-000: #FFFFFF;
 	--grey-100: #EEEFF0;
 	--grey-200: #D4D7D9;
 	--grey-300: #BABFC3;
@@ -21,12 +22,18 @@
 }
 
 body {
-	background-color: var(--concrete-100);
-	font-family: 'Noto Sans';
+	background-color: var(--concrete-000);
+	font-family: 'Open Sans';
+	font-size: 1em;
+	color: var(--grey-900);
 }
 
 main {
 	padding: 1em;
+}
+
+.container {
+	display: flex;
 }
 
 header {
@@ -45,6 +52,7 @@ nav ul{
 
 nav ul li:first-child {
 	display: flex;
+	width: 12em;
 }
 
 nav ul li {
@@ -53,18 +61,81 @@ nav ul li {
 	list-style-type: none;
 }
 
+nav ul li input {
+	border: 0;
+	border-bottom: 1px solid var(--grey-200);
+	padding: 1em;
+	width: 30em;
+}
+
+nav ul li input:focus {
+	outline: var(--marvel-400);
+}
+nav ul li button {
+	border: 0;
+	background-color: var(--marvel-500);
+	border-radius: 10em;
+	color: var(--grey-000);
+	cursor: pointer;
+	padding: 0.75em 2em;
+	transition: background-color .5s ease-in-out;
+}
+
+nav ul li button:hover {
+	background-color: var(--marvel-700);
+}
+
+ul {
+	margin: 0;
+}
+
+aside {
+	flex: 1;
+}
+
+aside ul li:first-of-type {
+	color: var(--grey-400);
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 0.75em;
+	width: 18em;
+}
+
+aside ul li {
+	padding-top: 1em;
+}
+
+aside ul:last-of-type li:first-of-type {
+	padding-top: 3.75em;
+}
+
+li {
+	list-style-type: none;
+}
+
+a {
+	color: var(--grey-900);
+	text-decoration: none;
+	transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+	color: var(--marvel-500);
+}
+
 h2 {
 	font-size: 1em;
 }
 
 section {
+	flex: 2;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-evenly;
+	justify-content: space-between;
 }
 
 section header {
-	align-self:stretch
+	flex: 0 0 100%;
 }
 
 .characters img {
@@ -74,21 +145,21 @@ section header {
 }
 
 article {
-	padding: 1em;
-	margin: 1em;
-	width: 20%;
+	padding: 0 0.75em;
+	/* margin: 1em; */
+	width: 16%;
 }
 
 img {
 	position: relative;
 	border-radius: 0.15em;
 	box-shadow: 0 4px 8px -1px rgba(0,0,0,.4),0 2px 4px -1px rgba(0,0,0,.09);
-	transition: all 1s ease-in-out;
+	transition: all 0.5s ease-in-out;
 	width: 100%;
 }
 
-img:hover {
-	/* transform: scale(1.4); */
+section img:hover {
+	transform: scale(1.1);
 	box-shadow: 0 4px 80px 9px rgba(0,0,0,.15),0 2px 16px 11px rgba(0,0,0,.2);
 }
 
