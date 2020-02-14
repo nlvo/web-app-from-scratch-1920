@@ -1,0 +1,29 @@
+{
+  "name": "marvel-comics",
+  "version": "1.0.0",
+  "description": "Marvel based application where you can get an overview with the latest comic release, series and/or events.",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "rollup -c --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nlvo/web-app-from-scratch-1920.git"
+  },
+  "keywords": [
+    "marvel",
+    "api"
+  ],
+  "author": "Lien Vo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nlvo/web-app-from-scratch-1920/issues"
+  },
+  "homepage": "https://github.com/nlvo/web-app-from-scratch-1920#readme",
+  "devDependencies": {
+    "rollup": "^1.31.1"
+  }
+}
