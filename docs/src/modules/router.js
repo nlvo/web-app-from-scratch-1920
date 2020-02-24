@@ -5,8 +5,11 @@ const routes = () => {
         '': function () {
             api.allComics();
         },
+        'characters': function () {
+            api.allComics();
+        },
         'comics': function () {
-            // api.getAllCharacters();
+            api.allComics();
         },
         'comics/:id': function (id) {
             api.getComic(id);

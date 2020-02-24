@@ -1,17 +1,44 @@
 import * as data from '../modules/data';
 import * as render from '../modules/render';
 
-const endpointMarvel = 'https://gateway.marvel.com/v1/public/';
 const apiKey = '&apikey=22b5f2403c91db4fba23cad90a8b2ab7';
 const hash = '&hash=e6bb9dbff35775d2d8aed171d44888d4';
 const timestamp = 'ts=1581025873';
 const category = 'comics';
 const query = 'dateDescriptor=thisMonth&orderBy=onsaleDate&limit=10'
-const marvelUrl = `${endpointMarvel}${category}?${query}&${timestamp}&${apiKey}&${hash}`;
+const marvelUrl = `${baseUrl}${category}?${query}&${timestamp}&${apiKey}&${hash}`;
 
-// const getJsonData
-const getAllComics = () => {
-    return fetch(marvelUrl)
+const baseUrl = new URL('https://gateway.marvel.com/v1/public/');
+const comicsEndpoint = new URL('comics', baseUrl);
+const charactersEndpoint = new URL('characters', baseUrl);
+
+const queries = {
+    dateDescriptor: 'thisMonth',
+    orderBy: 'onsaleDate',
+    limit : 10,
+    ts : '1581025873',
+    apikey : '22b5f2403c91db4fba23cad90a8b2ab7',
+    hash : 'e6bb9dbff35775d2d8aed171d44888d4'
+
+}
+
+const searchParams = new URLSearchParams(queries);
+comicsEndpoint.search = searchParams;
+
+const searchParamsCharacters = new URLSearchParams(queries);
+charactersEndpoint.search = searchParamsCharacters;
+
+
+const getOverview = () => {
+    // getAllData(comicsEndpoint);
+    allComics(comicsEndpoint);
+    console.log(url)
+}
+
+// const getJsonData getAllComics
+const getAllData = (url) => {
+    console.log(url)
+    return fetch(url)
         .then(response => {
             return response.json();
         }).then(jsonData => {
@@ -26,13 +53,13 @@ const getAllComics = () => {
 }
 
 const allComics = () => {
-    getAllComics().then(data => {
+    getAllData(comicsEndpoint).then(data => {
         render.htmlElement(data, 'comics');
     })
 }
 
 const getComic = (id) => {
-    getAllComics().then(data => {
+    getAllData(comicsEndpoint).then(data => {
         data = data.filter(data => data.id == id)
         return data;
     }).then(data => {
@@ -44,6 +71,7 @@ const getComic = (id) => {
 }
 
 export {
+    getOverview,
     allComics,
     getComic
 };
