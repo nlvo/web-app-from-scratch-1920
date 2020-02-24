@@ -1,11 +1,4 @@
-const getDetail = (id) => {
-    var detail = data.filter(data => data.id == id);
-    // detail = detail[0];
-    // https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d
-    console.log(detail);
-}
-
-const addHtmlElement = (jsonData, selector) => {
+const htmlElement = (jsonData, selector) => {
 
     for (const comic of jsonData) {
         const className = `.${selector}`;
@@ -15,11 +8,10 @@ const addHtmlElement = (jsonData, selector) => {
         const articleImage = document.createElement('img');
         const articleUrl = document.createElement('a');
 
-        // heading.textContent = `${comic.hasOwnProperty('name') ? comic.name : ''}`;
         articleUrl.textContent = `${comic.hasOwnProperty('name') ? comic.name : ''}`;
 
         articleImage.src = `${comic.thumbnail.path}.${comic.thumbnail.extension}`; //template literals
-        articleUrl.href = `#characters/${comic.id}`;
+        articleUrl.href = `#${selector}/${comic.id}`;
 
         heading.appendChild(articleUrl);
         article.appendChild(articleImage);
@@ -29,6 +21,5 @@ const addHtmlElement = (jsonData, selector) => {
 }
 
 export {
-    addHtmlElement,
-    getDetail
+    htmlElement
 }

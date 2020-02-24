@@ -11,13 +11,43 @@ const marvelUrl = `${endpointMarvel}${category}?${query}&${timestamp}&${apiKey}&
 
 // const getJsonData
 const getAllComics = () => {
-    fetch(marvelUrl)
+    return fetch(marvelUrl)
         .then(response => {
             return response.json();
         }).then(jsonData => {
             const cleanedData = data.clean(jsonData);
-            render.addHtmlElement(cleanedData, 'comics');
-        });
+            console.log(cleanedData);
+            // const test = cleanedData.sort( (a,b)=> a.name.localeCompare(b.name));
+            // console.log(test);
+            // https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript/16481400#16481400
+            return cleanedData;
+        })
+
 }
 
-export { getAllComics };
+const allComics = () => {
+    getAllComics().then(data => {
+        render.htmlElement(data, 'comics');
+    })
+}
+
+const getComic = (id) => {
+    getAllComics().then(data => {
+        data = data.filter(data => data.id == id)
+        return data;
+    }).then(data => {
+        render.htmlElement(data, 'comic-detail');
+    })
+    // var detail = data.filter(data => data.id == id);
+    // detail = detail[0];
+    // https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d
+}
+
+export {
+    allComics,
+    getComic
+};
+
+// fetch data for overview page
+// but also for detailpage
+// check if the data already exist if not fetch data

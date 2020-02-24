@@ -3,14 +3,13 @@ import * as api from '../modules/api';
 const routes = () => {
     routie({
         '': function () {
-            api.getAllComics();
+            api.allComics();
         },
-        'characters': function () {
-
+        'comics': function () {
+            // api.getAllCharacters();
         },
-        'characters/:id': function (id) {
-            getDetail(id);
-            // console.log(id);
+        'comics/:id': function (id) {
+            api.getComic(id);
         }
     })
 }
