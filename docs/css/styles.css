@@ -109,6 +109,10 @@ aside ul:last-of-type li:first-of-type {
 	padding-top: 3.75em;
 }
 
+div {
+	flex: 5;
+}
+
 li {
 	list-style-type: none;
 }

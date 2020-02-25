@@ -1,14 +1,22 @@
 
 const clean = (oldData) => {
-    var newData = oldData.data.results;
-    newData = newData.map((data) => {
+    console.log(oldData);
+
+    let newData = oldData.data.results;
+    return newData = newData.map((data) => {
+        let creators = data.creators.items.reduce((creators,creator) => creators.concat(creator.name),[]);
+        let stories = data.stories.items.reduce((stories,story) => stories.concat(story),[]);
         return {
             id : data.id,
             name: data.name || data.title,
-            thumbnail: data.thumbnail
+            thumbnail: data.thumbnail,
+            creatorsName: creators
+            // storiesThumbnail: stories.thumbnail
         }
     });
-    return newData;
+
+    // https://stackoverflow.com/questions/48435515/how-to-flatten-nested-array-of-object-using-es6
+
     // https://stackoverflow.com/questions/54733622/i-need-remove-unnecessary-json-objects-form-my-result-json-file-using-javascript
 }
 
