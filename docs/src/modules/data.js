@@ -1,16 +1,20 @@
 
 const clean = (oldData) => {
-    console.log(oldData);
+    // console.log(oldData);
 
     let newData = oldData.data.results;
+
     return newData = newData.map((data) => {
         let creators = data.creators.items.reduce((creators,creator) => creators.concat(creator.name),[]);
-        let stories = data.stories.items.reduce((stories,story) => stories.concat(story),[]);
+        let characters = data.characters.items.reduce((acc, data) => acc.concat(data.name),[]);
+        // console.log(characters)
+        // let stories = data.stories.items.reduce((stories,story) => stories.concat(story),[]);
         return {
             id : data.id,
             name: data.name || data.title,
             thumbnail: data.thumbnail,
-            creatorsName: creators
+            creatorsName: creators,
+            charactersName: characters
             // storiesThumbnail: stories.thumbnail
         }
     });

@@ -11,42 +11,42 @@ const charactersEndpoint = new URL('characters', baseUrl);
 const queries = {
     dateDescriptor: 'thisMonth',
     orderBy: 'onsaleDate',
-    limit : 10,
-    ts : '1581025873',
-    apikey : '22b5f2403c91db4fba23cad90a8b2ab7',
-    hash : 'e6bb9dbff35775d2d8aed171d44888d4'
+    limit: 20,
+    ts: '1581025873',
+    apikey: '22b5f2403c91db4fba23cad90a8b2ab7',
+    hash: 'e6bb9dbff35775d2d8aed171d44888d4'
 }
 
 const searchParams = new URLSearchParams(queries);
 comicsEndpoint.search = searchParams;
 
 // fetched data
-const fetchData = (url) => {
-    return new Promise ((resolve, reject) => {
-        fetch(url)
-            .then(response => response.json())
-            .then(jsonData => {
-                console.log(data.clean(jsonData))
-                resolve(data.clean(jsonData))}
-            )  
-    })
+const fetchData = async (url) => {
+    const response = await fetch(url);
+    const jsonData = await response.json();
+    const cleanData = data.clean(jsonData);
+    return cleanData;
+}
+
+const findComic = async (id) => {
+    const comics = await fetchData(comicsEndpoint);
+    const comic = comics.find((data) => data.id == id);
+    return comic;
+    // https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d
 }
 
 // api.getAllComics
 // api.getComic
 // api.init
 
-// created an async function, because it otherwise gets called first before there's even data aka undefined
 const getAllComics = async () => {
-    fetchData(comicsEndpoint)
-    .then(data => render.allComics(data));
+    const comics = await fetchData(comicsEndpoint);
+    render.allComics(comics);
 }
 
 const getComic = async (id) => {
-    fetchData(comicsEndpoint)
-    .then(data => data.filter(data => data.id == id))
-    .then(data => render.comic(data));
-    // https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d
+    const comic = await findComic(id);
+    render.comic(comic);
 }
 
 export {
