@@ -1,15 +1,18 @@
 import * as api from '../modules/api';
 
+
 const routes = () => {
+    
+    
     routie({
         '': function () {
-            api.getAllComics();
+            api.getAllComics();;
         },
         'characters': function () {
             api.getAllCharacters();
         },
         'comics': function () {
-            api.getAllComics();
+            api.getAllComics();;
         },
         'comics/:id': function (id) {
             api.getComic(id);

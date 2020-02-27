@@ -6,8 +6,7 @@ console.log(jsonData)
         section.insertAdjacentHTML('beforeend',
             `<article>
                 <img src="${comic.thumbnail.path}.${comic.thumbnail.extension}">
-                <h2>${comic.name}</h2>
-                <a href="#${selector}/${comic.id}">more</a>
+                <a href="#${selector}/${comic.id}"><h2>${comic.name}</h2></a>
             </article>`);
     }
 }

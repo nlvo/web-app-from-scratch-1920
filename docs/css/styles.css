@@ -130,6 +130,30 @@ a:hover {
 h2 {
 	font-size: 1em;
 }
+.loader:empty {
+	/* background-color: var(--grey-100); */
+	height: calc(100vh - 10em);
+}
+
+.loader:empty:before {
+	animation: loading 1s infinite;
+	content: url('../img/Captain_America_Shield.svg');
+	display: flex;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	margin: 0 auto;
+	height: 8em;
+	width: 8em;
+}
+
+.loader:empty::after {
+	content:'loading..';
+	display: flex;
+	position: absolute;
+	top: 60%;
+	left: 52.5%;
+}
 
 section {
 	flex: 2;
@@ -152,6 +176,7 @@ article {
 	padding: 0 0.75em;
 	/* margin: 1em; */
 	width: 16%;
+	transition: all 0.5s ease-in-out;
 }
 
 img {
@@ -167,5 +192,9 @@ section img:hover {
 	box-shadow: 0 4px 80px 9px rgba(0,0,0,.15),0 2px 16px 11px rgba(0,0,0,.2);
 }
 
-
+@keyframes loading{
+	to {
+		transform: rotate(360deg);
+	}
+}
 
