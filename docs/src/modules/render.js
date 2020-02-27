@@ -1,12 +1,3 @@
-function active () {
-    const section = document.querySelector('section');
-    if(!section.classList.contains('active')){
-        section.classList.add('active');
-    } else {
-        section.classList.remove('active')
-    }
-}
-
 const createElement = (jsonData, selector) => {
 console.log(jsonData)
     for (const comic of jsonData) {

@@ -57,15 +57,14 @@ const searchName = async (value) => {
 
     const searchResults = await fetchData(comicsEndpoint);
     render.allComics(searchResults);
-    // return searchResults;
 }
 
 var button = document.querySelector('button');
 const search = async () => {
     var value = document.querySelector('input').value;
     searchName(value);
-
 }
+
 button.addEventListener('click', search);
 
 export {
@@ -73,7 +72,3 @@ export {
     searchName,
     getComic
 };
-
-// fetch data for overview page
-// but also for detailpage
-// check if the data already exist if not fetch data
