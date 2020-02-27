@@ -2,20 +2,24 @@ import * as api from '../modules/api';
 
 
 const routes = () => {
-    
-    
+
+  
+
     routie({
         '': function () {
-            api.getAllComics();;
+            // api.getOverview();
+            // api.init();
         },
         'characters': function () {
-            api.getAllCharacters();
+            // api.getAllCharacters();
         },
         'comics': function () {
-            api.getAllComics();;
+            api.getAllComics();
+            api.searchName();
         },
         'comics/:id': function (id) {
             api.getComic(id);
+
         }
     })
 }
