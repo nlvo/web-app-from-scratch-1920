@@ -52,7 +52,7 @@ For more information you can refer to the [Marvel API documentation](https://dev
 ![Actor Diagram](https://user-images.githubusercontent.com/8554238/75497364-50a9f880-59c4-11ea-898d-418ca7a1e3d4.png)
 
 ### Interaction Diagram
-![Interaction Diagram](https://user-images.githubusercontent.com/8554238/75497368-51db2580-59c4-11ea-9045-02d7c1f69e1a.png)
+![Interaction Diagram](https://user-images.githubusercontent.com/8554238/75497870-dc705480-59c5-11ea-8bd3-099a5912ae45.png)
 
 ## ToDo
 Things/features I would like to create can be found in with a label __feature__
