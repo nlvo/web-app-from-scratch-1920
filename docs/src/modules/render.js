@@ -1,5 +1,5 @@
+// create html element
 const createElement = (jsonData, selector) => {
-console.log(jsonData)
     for (const comic of jsonData) {
         const className = `.${selector}`;
         const section = document.querySelector(className);
@@ -11,6 +11,7 @@ console.log(jsonData)
     }
 }
 
+// create detail html element with classname
 const createDetail = (jsonData, selector) => {
     const className = `.${selector}`;
     const section = document.querySelector(className);
@@ -31,11 +32,12 @@ const createDetail = (jsonData, selector) => {
     section.insertAdjacentHTML('afterbegin', element);
 }
 
-// render html element
+// render overview page
 const allComics = (data) => {
     createElement(data, 'comics');
 }
 
+// render detailpage
 const comic = (data) => {
     createDetail(data, 'comic-detail');
 }

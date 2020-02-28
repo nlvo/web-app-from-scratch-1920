@@ -13,7 +13,7 @@ $ git clone https://nlvo.github.io/web-app-from-scratch-1920/
 # Install dependencies
 npm install
 
-# Build modules
+# Bundler
 npm run build
 
 # Open index.html in your browser

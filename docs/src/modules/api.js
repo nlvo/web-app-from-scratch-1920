@@ -1,6 +1,7 @@
 import * as data from '../modules/data';
 import * as render from '../modules/render';
 
+// create endpoint url
 const baseUrl = new URL('https://gateway.marvel.com/v1/public/');
 const comicsEndpoint = new URL('comics', baseUrl);
 
@@ -19,7 +20,7 @@ const queries = {
 const searchParams = new URLSearchParams(queries);
 comicsEndpoint.search = searchParams;
 
-// fetched data
+// fetched data and clean it
 const fetchData = async (url) => {
     const response = await fetch(url);
     const jsonData = await response.json();
@@ -27,6 +28,7 @@ const fetchData = async (url) => {
     return cleanData;
 }
 
+// fetch data and find the correct comic with id
 const findComic = async (id) => {
     const comics = await fetchData(comicsEndpoint);
     const findData = comics.find((data) => data.id == id);
@@ -34,20 +36,19 @@ const findComic = async (id) => {
     // https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d
 }
 
-// api.getAllComics
-// api.getComic
-// api.init
-
+// Get data for the overview page and render
 const getAllComics = async () => {
     const comics = await fetchData(comicsEndpoint);
     render.allComics(comics);
 }
 
+// Get data for the detail page and render
 const getComic = async (id) => {
     const comic = await findComic(id);
     render.comic(comic);
 }
 
+// Search for comic with name
 const searchName = async (value) => {
     const comicsEndpoint = new URL('comics', baseUrl);
     const searchParams = new URLSearchParams(queries);

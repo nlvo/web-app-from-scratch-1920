@@ -20,7 +20,6 @@ const clean = (oldData) => {
     });
 
     // https://stackoverflow.com/questions/48435515/how-to-flatten-nested-array-of-object-using-es6
-
     // https://stackoverflow.com/questions/54733622/i-need-remove-unnecessary-json-objects-form-my-result-json-file-using-javascript
 }
 
