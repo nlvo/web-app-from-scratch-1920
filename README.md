@@ -6,11 +6,18 @@
 The concept of this application is a Marvel based application where you can get an overview with the latest comic release, series and/or events.
 
 ## Installation
-1. Clone or download the repository
-`$ git clone https://nlvo.github.io/web-app-from-scratch-1920/`
-1. Open
-`index.html` in your browser
+```
+# Clone or download the repository
+$ git clone https://nlvo.github.io/web-app-from-scratch-1920/
 
+# Install dependencies
+npm install
+
+# Build modules
+npm run build
+
+# Open index.html in your browser
+```
 ## API
 The Marvel Comics API’s base endpoint is `http(s)://gateway.marvel.com/`.
 
@@ -55,8 +62,8 @@ For more information you can refer to the [Marvel API documentation](https://dev
 ![Interaction Diagram](https://user-images.githubusercontent.com/8554238/75497870-dc705480-59c5-11ea-8bd3-099a5912ae45.png)
 
 ## ToDo
-Things/features I would like to create can be found in with a label __feature__
-[project](https://github.com/nlvo/web-app-from-scratch-1920/projects/1)
+Things/features I would like to create can be found in my [projects](https://github.com/nlvo/web-app-from-scratch-1920/projects/1)
+ with the label __feature__
 
 ### License
 Copyright © 2020, [Lien Vo](https://github.com/nlvo) . Released under the [MIT license](https://github.com/nlvo/web-app-from-scratch-1920/blob/master/LICENSE). Data provided by Marvel. © 2020 Marvel.
