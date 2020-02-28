@@ -32,11 +32,11 @@ const createDetail = (jsonData, selector) => {
 }
 
 // render html element
-const allComics = async (data) => {
+const allComics = (data) => {
     createElement(data, 'comics');
 }
 
-const comic = async (data) => {
+const comic = (data) => {
     createDetail(data, 'comic-detail');
 }
 

@@ -3,7 +3,6 @@ import * as render from '../modules/render';
 
 const baseUrl = new URL('https://gateway.marvel.com/v1/public/');
 const comicsEndpoint = new URL('comics', baseUrl);
-const charactersEndpoint = new URL('characters', baseUrl);
 
 // https://blog.bitsrc.io/using-the-url-object-in-javascript-5f43cd743804
 // Thijs

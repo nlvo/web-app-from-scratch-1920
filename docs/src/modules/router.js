@@ -3,12 +3,10 @@ import * as api from '../modules/api';
 
 const routes = () => {
 
-  
-
     routie({
         '': function () {
-            // api.getOverview();
-            // api.init();
+            api.getAllComics();
+            api.searchName();
         },
         'characters': function () {
             // api.getAllCharacters();
