@@ -25,6 +25,23 @@ To use the Marvel API you'll need a few things:
 * `/v1/public/comics`
 * `/v1/public/series`
 
+### Results structure
+```
+{
+  "code": 200,
+  "status": "Ok",
+  "etag": "f0fbae65eb2f8f28bdeea0a29be8749a4e67acb3",
+  "data": {
+    "offset": 0,
+    "limit": 20,
+    "total": 30920,
+    "count": 20,
+    "results": [{array of objects}}]
+  }
+}
+```
+More about the [api results](https://developer.marvel.com/documentation/apiresults) in the Marvel API documentation.
+
 ### Rate Limit
 3000 calls per day
 
@@ -32,17 +49,17 @@ For more information you can refer to the [Marvel API documentation](https://dev
 
 ## Aplication
 ### Actor Diagram
-![Actor-Diagram-Marvel](https://user-images.githubusercontent.com/8554238/74510825-db8aed80-4f04-11ea-8c2b-5ab86841990c.png)
+![Actor Diagram](https://user-images.githubusercontent.com/8554238/75497364-50a9f880-59c4-11ea-898d-418ca7a1e3d4.png)
 
 ### Interaction Diagram
-![Interaction-Diagram-Marvel](https://user-images.githubusercontent.com/8554238/74510815-d7f76680-4f04-11ea-915b-4276cb06d161.png)
+![Interaction Diagram](https://user-images.githubusercontent.com/8554238/75497368-51db2580-59c4-11ea-9045-02d7c1f69e1a.png)
 
 ## ToDo
-Things I would like to add can be found in with a label __todo__
-[project](https://github.com/nlvo/web-app-from-scratch-1920/projects)
+Things/features I would like to create can be found in with a label __feature__
+[project](https://github.com/nlvo/web-app-from-scratch-1920/projects/1)
 
 ### License
-Copyright © 2019, [Lien Vo](https://github.com/nlvo) . Released under the [MIT license](https://github.com/nlvo/web-app-from-scratch-1920/blob/master/LICENSE).
+Copyright © 2020, [Lien Vo](https://github.com/nlvo) . Released under the [MIT license](https://github.com/nlvo/web-app-from-scratch-1920/blob/master/LICENSE). Data provided by Marvel. © 2020 Marvel.
 
 <!-- Add a link to your live demo in Github Pages 🌐-->
 
