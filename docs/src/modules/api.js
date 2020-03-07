@@ -38,10 +38,20 @@ async function getComic (id) {
     render.comic(comic);
 }
 
+//clean up existing child elements
+function clearElement() {
+    const section = document.querySelector('section');
+    while (section.firstChild) {
+        section.removeChild(section.firstChild)
+    }
+    // https://medium.com/front-end-weekly/remove-all-children-of-the-node-in-javascript-968ad8f120eb
+}
+
 // Search for comic with name
 async function searchName (value) {
     const query = `titleStartsWith=${value}`;
     const comicsEndpoint = `${endpointMarvel}${category}?${query}&${timestamp}&${apiKey}&${hash}`;
+    clearElement();
     const searchResults = await fetchData(comicsEndpoint);
     render.allComics(searchResults);
 }
