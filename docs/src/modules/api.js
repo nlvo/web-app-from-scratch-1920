@@ -17,19 +17,38 @@ async function getAllComics () {
 }
 
 function createComicsEndpoint () {
-    const comicsEndpoint = createEndpoint('dateDescriptor=thisMonth&orderBy=onsaleDate&limit=10');
+    const comicsEndpoint = createEndpoint('comics', 'dateDescriptor=thisMonth&orderBy=onsaleDate&limit=10');
     return comicsEndpoint;
 }
 
-function createEndpoint(queries) {
+// Get data for the overview page and render
+async function showAllCharacters () {
+    const characters = await getAllCharacters();
+    render.allComics(characters);
+}
+
+// Fetch data
+async function getAllCharacters () {
+    const charactersEndpoint = createCharactersEndpoint();
+    const characters = await fetchData(charactersEndpoint);
+    return characters;
+}
+
+function createCharactersEndpoint () {
+    const charactersEndpoint = createEndpoint('characters', 'orderBy=-modified');
+    return charactersEndpoint;
+}
+
+function createEndpoint(category, query) {
     // create endpoint url
     const endpointMarvel = 'https://gateway.marvel.com/v1/public/';
     const apiKey = '22b5f2403c91db4fba23cad90a8b2ab7';
     const hash = 'e6bb9dbff35775d2d8aed171d44888d4';
     const timestamp = '1581025873';
-    const category = 'comics';
-    const query = queries;
+    // const category = category;
+    // const query = queries;
     const endpoint = `${endpointMarvel}${category}?${query}&ts=${timestamp}&apikey=${apiKey}&hash=${hash}`;
+    console.log(endpoint)
     return endpoint;
 }
 
@@ -37,6 +56,7 @@ function createEndpoint(queries) {
 async function fetchData (url) {
     const response = await fetch(url);
     const jsonData = await response.json();
+    console.log(jsonData)
     const cleanData = data.clean(jsonData);
     return cleanData;
 }
@@ -85,5 +105,6 @@ button.addEventListener('click', showSearchResults);
 
 export {
     showAllComics,
+    showAllCharacters,
     showComic
 };

@@ -8,7 +8,7 @@ function init () {
             api.showAllComics();
         },
         'characters': function () {
-            // api.getAllCharacters();
+            api.showAllCharacters();
         },
         'comics': function () {
             api.showAllComics();

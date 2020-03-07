@@ -17,7 +17,7 @@ function createDetail (jsonData, selector) {
     const section = document.querySelector(className);
     let list = '';
 
-    for (const creator of jsonData.creatorsName) {
+    for (const creator of jsonData.creators) {
         list += `<li>${creator}<li/>`
     }
 
