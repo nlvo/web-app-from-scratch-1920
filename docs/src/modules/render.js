@@ -1,5 +1,5 @@
 // create html element
-const createElement = (jsonData, selector) => {
+function createElement (jsonData, selector) {
     for (const comic of jsonData) {
         const className = `.${selector}`;
         const section = document.querySelector(className);
@@ -12,7 +12,7 @@ const createElement = (jsonData, selector) => {
 }
 
 // create detail html element with classname
-const createDetail = (jsonData, selector) => {
+function createDetail (jsonData, selector) {
     const className = `.${selector}`;
     const section = document.querySelector(className);
     let list = '';
@@ -33,12 +33,12 @@ const createDetail = (jsonData, selector) => {
 }
 
 // render overview page
-const allComics = (data) => {
+function allComics (data) {
     createElement(data, 'comics');
 }
 
 // render detailpage
-const comic = (data) => {
+function comic (data) {
     createDetail(data, 'comic-detail');
 }
 

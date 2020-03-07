@@ -1,7 +1,7 @@
 import * as api from '../modules/api';
 
 
-const routes = () => {
+function init () {
 
     routie({
         '': function () {
@@ -23,5 +23,5 @@ const routes = () => {
 }
 
 export {
-    routes
+    init
 };

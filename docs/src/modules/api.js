@@ -21,7 +21,7 @@ const searchParams = new URLSearchParams(queries);
 comicsEndpoint.search = searchParams;
 
 // fetched data and clean it
-const fetchData = async (url) => {
+async function fetchData (url) {
     const response = await fetch(url);
     const jsonData = await response.json();
     const cleanData = data.clean(jsonData);
@@ -29,7 +29,7 @@ const fetchData = async (url) => {
 }
 
 // fetch data and find the correct comic with id
-const findComic = async (id) => {
+async function findComic (id) {
     const comics = await fetchData(comicsEndpoint);
     const findData = comics.find((data) => data.id == id);
     return findData;
@@ -37,19 +37,19 @@ const findComic = async (id) => {
 }
 
 // Get data for the overview page and render
-const getAllComics = async () => {
+async function getAllComics () {
     const comics = await fetchData(comicsEndpoint);
     render.allComics(comics);
 }
 
 // Get data for the detail page and render
-const getComic = async (id) => {
+async function getComic (id) {
     const comic = await findComic(id);
     render.comic(comic);
 }
 
 // Search for comic with name
-const searchName = async (value) => {
+async function searchName (value) {
     const comicsEndpoint = new URL('comics', baseUrl);
     const searchParams = new URLSearchParams(queries);
     searchParams.append('titleStartsWith', value)
@@ -59,8 +59,8 @@ const searchName = async (value) => {
     render.allComics(searchResults);
 }
 
-var button = document.querySelector('button');
-const search = async () => {
+const button = document.querySelector('button');
+async function search () {
     var value = document.querySelector('input').value;
     searchName(value);
 }

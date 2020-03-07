@@ -1,5 +1,5 @@
 
-const clean = (oldData) => {
+function clean (oldData) {
     // console.log(oldData);
 
     let newData = oldData.data.results;
