@@ -1,14 +1,17 @@
 import * as data from '../modules/data';
 import * as render from '../modules/render';
 
-// create endpoint url
-const endpointMarvel = 'https://gateway.marvel.com/v1/public/';
-const apiKey = '&apikey=22b5f2403c91db4fba23cad90a8b2ab7';
-const hash = '&hash=e6bb9dbff35775d2d8aed171d44888d4';
-const timestamp = 'ts=1581025873';
-const category = 'comics';
-const query = 'dateDescriptor=thisMonth&orderBy=onsaleDate&limit=10';
-const comicsEndpoint = `${endpointMarvel}${category}?${query}&${timestamp}&${apiKey}&${hash}`;
+function createEndpoint(queries) {
+    // create endpoint url
+    const endpointMarvel = 'https://gateway.marvel.com/v1/public/';
+    const apiKey = '&apikey=22b5f2403c91db4fba23cad90a8b2ab7';
+    const hash = '&hash=e6bb9dbff35775d2d8aed171d44888d4';
+    const timestamp = 'ts=1581025873';
+    const category = 'comics';
+    const query = queries;
+    const endpoint = `${endpointMarvel}${category}?${query}&${timestamp}&${apiKey}&${hash}`;
+    return endpoint;
+}
 
 // fetched data and clean it
 async function fetchData (url) {
@@ -20,6 +23,7 @@ async function fetchData (url) {
 
 // fetch data and find the correct comic with id
 async function findComic (id) {
+    const comicsEndpoint = getComicsEndpoint();
     const comics = await fetchData(comicsEndpoint);
     const findData = comics.find((data) => data.id == id);
     return findData;
@@ -28,6 +32,7 @@ async function findComic (id) {
 
 // Get data for the overview page and render
 async function getAllComics () {
+    const comicsEndpoint = getComicsEndpoint();
     const comics = await fetchData(comicsEndpoint);
     render.allComics(comics);
 }
@@ -38,34 +43,35 @@ async function getComic (id) {
     render.comic(comic);
 }
 
-//clean up existing child elements
-function clearElement() {
-    const section = document.querySelector('section');
-    while (section.firstChild) {
-        section.removeChild(section.firstChild)
-    }
-    // https://medium.com/front-end-weekly/remove-all-children-of-the-node-in-javascript-968ad8f120eb
+function getComicsEndpoint () {
+    const comicsEndpoint = createEndpoint('dateDescriptor=thisMonth&orderBy=onsaleDate&limit=10');
+    return comicsEndpoint;
+}
+
+function getSearchEndpoint (searchinput) {
+    const searchEndpoint = createEndpoint(`titleStartsWith=${searchinput}`);
+    return searchEndpoint;
 }
 
 // Search for comic with name
-async function searchName (value) {
-    const query = `titleStartsWith=${value}`;
-    const comicsEndpoint = `${endpointMarvel}${category}?${query}&${timestamp}&${apiKey}&${hash}`;
-    clearElement();
-    const searchResults = await fetchData(comicsEndpoint);
+async function getSearchResults (inputValue) {
+    const searchEndpoint = getSearchEndpoint(inputValue);
+    const searchResults = await fetchData(searchEndpoint);
+    render.clearElements();
     render.allComics(searchResults);
 }
 
 const button = document.querySelector('button');
+
 async function search () {
     var value = document.querySelector('input').value;
-    searchName(value);
+    getSearchResults(value);
 }
 
 button.addEventListener('click', search);
 
 export {
     getAllComics,
-    searchName,
+    getSearchResults,
     getComic
 };

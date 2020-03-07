@@ -32,6 +32,15 @@ function createDetail (jsonData, selector) {
     section.insertAdjacentHTML('afterbegin', element);
 }
 
+//clean up existing child elements
+function clearElements() {
+    const section = document.querySelector('section');
+    while (section.firstChild) {
+        section.removeChild(section.firstChild)
+    }
+    // https://medium.com/front-end-weekly/remove-all-children-of-the-node-in-javascript-968ad8f120eb
+}
+
 // render overview page
 function allComics (data) {
     createElement(data, 'comics');
@@ -44,5 +53,6 @@ function comic (data) {
 
 export {
     allComics,
-    comic
+    comic,
+    clearElements
 }
