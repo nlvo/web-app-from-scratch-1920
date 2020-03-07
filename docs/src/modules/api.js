@@ -78,7 +78,7 @@ async function getComic (id) {
 
 // Search for comic with name
 async function showSearchResults () {
-    const searchResults = getSearchResults();
+    const searchResults = await getSearchResults();
     render.searchResults(searchResults);
 }
 
@@ -90,7 +90,7 @@ async function getSearchResults (){
 
 function createSearchEndpoint () {
     const searchInput = getSearchInput();
-    const searchEndpoint = createEndpoint(`titleStartsWith=${searchInput}`);
+    const searchEndpoint = createEndpoint('comics', `titleStartsWith=${searchInput}`);
     return searchEndpoint;
 }
 

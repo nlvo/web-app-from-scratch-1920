@@ -1,5 +1,6 @@
 // create html element
 function createElement (jsonData, selector) {
+    console.log(jsonData);
     for (const comic of jsonData) {
         const className = `.${selector}`;
         const section = document.querySelector(className);
@@ -49,6 +50,7 @@ function allComics (data) {
 
 // render detailpage
 function comic (data) {
+    removeElements();
     createDetail(data, 'comic-detail');
 }
 
