@@ -33,7 +33,7 @@ function createDetail (jsonData, selector) {
 }
 
 //clean up existing child elements
-function clearElements() {
+function removeElements() {
     const section = document.querySelector('section');
     while (section.firstChild) {
         section.removeChild(section.firstChild)
@@ -43,6 +43,7 @@ function clearElements() {
 
 // render overview page
 function allComics (data) {
+    removeElements();
     createElement(data, 'comics');
 }
 
@@ -51,8 +52,13 @@ function comic (data) {
     createDetail(data, 'comic-detail');
 }
 
+function searchResults (data) {
+    removeElements();
+    createElement(data, 'comics');
+}
+
 export {
     allComics,
     comic,
-    clearElements
+    searchResults
 }

@@ -5,19 +5,16 @@ function init () {
 
     routie({
         '': function () {
-            api.getAllComics();
-            api.searchName();
+            api.showAllComics();
         },
         'characters': function () {
             // api.getAllCharacters();
         },
         'comics': function () {
-            api.getAllComics();
-            api.searchName();
+            api.showAllComics();
         },
         'comics/:id': function (id) {
-            api.getComic(id);
-
+            api.showComic(id);
         }
     })
 }
