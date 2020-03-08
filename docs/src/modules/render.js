@@ -1,21 +1,24 @@
 // create html element
 function createElement (jsonData, selector) {
-    console.log(jsonData);
+
+    const section = document.querySelector('section');
+    section.className = '';
+    section.classList.add(selector);
     for (const comic of jsonData) {
-        const className = `.${selector}`;
-        const section = document.querySelector(className);
         section.insertAdjacentHTML('beforeend',
             `<article>
-                <img src="${comic.thumbnail.path}.${comic.thumbnail.extension}">
+                <img src="${comic.thumbnail}">
                 <a href="#${selector}/${comic.id}"><h2>${comic.name}</h2></a>
+                <p>Comics (${comic.comicsAvailabe})</p>
             </article>`);
     }
 }
 
 // create detail html element with classname
 function createDetail (jsonData, selector) {
-    const className = `.${selector}`;
-    const section = document.querySelector(className);
+    const section = document.querySelector('section');
+    section.className = '';
+    section.classList.add(selector);
     let list = '';
 
     for (const creator of jsonData.creators) {
@@ -25,7 +28,7 @@ function createDetail (jsonData, selector) {
     const element = 
     `<article>
         <h2>${jsonData.name}</h2>
-        <img src="${jsonData.thumbnail.path}.${jsonData.thumbnail.extension}">
+        <img src="${jsonData.thumbnail}">
         <h3>Creators</h3>
         <ul>${list}</ul>
     </article>`
@@ -48,6 +51,11 @@ function allComics (data) {
     createElement(data, 'comics');
 }
 
+function allCharacters (data) {
+    removeElements();
+    createElement(data, 'characters');
+}
+
 // render detailpage
 function comic (data) {
     removeElements();
@@ -61,6 +69,7 @@ function searchResults (data) {
 
 export {
     allComics,
+    allCharacters,
     comic,
     searchResults
 }

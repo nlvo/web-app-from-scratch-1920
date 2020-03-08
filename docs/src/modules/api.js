@@ -24,7 +24,7 @@ function createComicsEndpoint () {
 // Get data for the overview page and render
 async function showAllCharacters () {
     const characters = await getAllCharacters();
-    render.allComics(characters);
+    render.allCharacters(characters);
 }
 
 // Fetch data
@@ -48,7 +48,7 @@ function createEndpoint(category, query) {
     // const category = category;
     // const query = queries;
     const endpoint = `${endpointMarvel}${category}?${query}&ts=${timestamp}&apikey=${apiKey}&hash=${hash}`;
-    console.log(endpoint)
+    // console.log(endpoint)
     return endpoint;
 }
 
