@@ -56,7 +56,6 @@ function createEndpoint(category, query) {
 async function fetchData (url) {
     const response = await fetch(url);
     const jsonData = await response.json();
-    console.log(jsonData)
     const cleanData = data.clean(jsonData);
     return cleanData;
 }

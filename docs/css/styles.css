@@ -149,6 +149,10 @@ aside nav ul li a:before {
 	padding-right: .625em;
 }
 
+aside nav ul li a.active {
+	color: var(--grey-900);
+}
+
 aside nav ul:first-child li:nth-of-type(2) a:before {
 	content: '\e906';
 }

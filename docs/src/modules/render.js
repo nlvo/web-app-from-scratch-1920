@@ -67,6 +67,38 @@ function searchResults (data) {
     createElement(data, 'comics');
 }
 
+let links = document.querySelectorAll('.link');
+
+function currentPage () {
+    const page = location.hash.replace('#', '');
+    return page;
+}
+
+function setPageActive () {
+    const activePage = currentPage();
+    for(let i = 0; i < links.length; i++) {
+        const link = links[i].getAttribute('href').replace('#', '')
+        if(link == activePage){
+            links[i].classList.add('active')
+        }
+    }
+}
+
+function setLinkActive () {
+    for(let i = 0; i < links.length; i++) {
+        if(links[i].classList.contains('active')){
+            links[i].classList.remove('active');
+        }
+    }
+    this.classList.add('active');
+}
+
+for(let i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', setLinkActive);  
+}
+
+setPageActive();
+
 export {
     allComics,
     allCharacters,
