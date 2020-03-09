@@ -1,6 +1,6 @@
 // create html element
 function createElement (jsonData, selector) {
-
+// console.log(jsonData)
     const section = document.querySelector('section');
     section.className = '';
     section.classList.add(selector);

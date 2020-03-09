@@ -3,6 +3,13 @@ import * as render from '../modules/render';
 
 // init with comics,characters/events
 
+async function init() {
+    const comics = getAllComics()
+    // const characters = getAllCharacters()
+    render.allComics(comics);
+    // render.allComics(characters);
+}
+
 // Get data for the overview page and render
 async function showAllComics () {
     const comics = await getAllComics();
@@ -61,6 +68,21 @@ async function fetchData (url) {
 }
 
 // Get data for the detail page and render
+async function showCharacter (id) {
+    const comic = await getComic(id);
+    render.comic(comic);
+}
+
+// fetch data and find the correct comic with id
+async function getCharacter (id) {
+    const comicsEndpoint = createComicsEndpoint();
+    const comics = await fetchData(comicsEndpoint);
+    const findData = comics.find((data) => data.id == id);
+    return findData;
+    // https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d
+}
+
+// Get data for the detail page and render
 async function showComic (id) {
     const comic = await getComic(id);
     render.comic(comic);
@@ -103,7 +125,8 @@ function getSearchInput () {
 button.addEventListener('click', showSearchResults);
 
 export {
+    init,
     showAllComics,
-    showAllCharacters,
-    showComic
+    showComic,
+    showAllCharacters
 };
