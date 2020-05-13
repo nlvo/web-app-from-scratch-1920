@@ -28,6 +28,11 @@ function createComicsEndpoint () {
     return comicsEndpoint;
 }
 
+function createComicEndpoint () {
+    const comicsEndpoint = createEndpoint('comics', 'dateDescriptor=thisMonth&orderBy=onsaleDate');
+    return comicsEndpoint;
+}
+
 // Get data for the overview page and render
 async function showAllCharacters () {
     const characters = await getAllCharacters();
@@ -84,15 +89,17 @@ async function getCharacter (id) {
 
 // Get data for the detail page and render
 async function showComic (id) {
-    const comic = await getComic(id);
+    const comic = await getComic(id);    
     render.comic(comic);
 }
 
 // fetch data and find the correct comic with id
 async function getComic (id) {
-    const comicsEndpoint = createComicsEndpoint();
+    const comicsEndpoint = createComicEndpoint();
     const comics = await fetchData(comicsEndpoint);
-    const findData = comics.find((data) => data.id == id);
+    const findData = comics.find(data => data.id == id);
+    console.log(comics.find(data => data.id == id));
+      
     return findData;
     // https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d
 }

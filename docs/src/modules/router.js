@@ -15,6 +15,9 @@ function init () {
         },
         'comics/:id': function (id) {
             api.showComic(id);
+        },
+        'comic/:id': function (id) {
+            api.showSearch(id);
         }
     })
 }
