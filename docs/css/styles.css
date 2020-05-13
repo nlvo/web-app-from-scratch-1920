@@ -220,6 +220,7 @@ h2 {
 	width: 8em;
 }
 
+.search.loader:empty::after,
 .comics.loader:empty::after {
 	content:'loading..';
 	display: flex;
@@ -294,6 +295,7 @@ article img {
 	object-fit: cover;
 }
 
+.search article img,
 .comics article img {
 	position: relative;
 	border-radius: 0.15em;
@@ -303,6 +305,7 @@ article img {
 	width: 14em;
 }
 
+.search article img:hover,
 .comics article img:hover {
 	transform: scale(1.1);
 	box-shadow: 0 4px 80px 9px rgba(0,0,0,.15),0 2px 16px 11px rgba(0,0,0,.2);

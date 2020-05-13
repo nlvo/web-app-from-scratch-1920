@@ -64,7 +64,7 @@ function comic (data) {
 
 function searchResults (data) {
     removeElements();
-    createElement(data, 'comics');
+    createElement(data, 'search');
 }
 
 let links = document.querySelectorAll('.link');

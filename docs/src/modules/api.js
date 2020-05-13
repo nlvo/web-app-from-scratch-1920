@@ -28,8 +28,13 @@ function createComicsEndpoint () {
     return comicsEndpoint;
 }
 
-function createComicEndpoint () {
-    const comicsEndpoint = createEndpoint('comics', 'dateDescriptor=thisMonth&orderBy=onsaleDate');
+function createComicEndpoint (id) {
+    const comicsEndpoint = createEndpoint(`comics/${id}`, 'dateDescriptor=thisMonth&orderBy=onsaleDate');
+    return comicsEndpoint;
+}
+
+function createSearchDetailEndpoint (id) {
+    const comicsEndpoint = createEndpoint(`comics/${id}`, '');
     return comicsEndpoint;
 }
 
@@ -95,11 +100,27 @@ async function showComic (id) {
 
 // fetch data and find the correct comic with id
 async function getComic (id) {
-    const comicsEndpoint = createComicEndpoint();
+    const comicsEndpoint = createComicEndpoint(id);
     const comics = await fetchData(comicsEndpoint);
     const findData = comics.find(data => data.id == id);
     console.log(comics.find(data => data.id == id));
       
+    return findData;
+    // https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d
+}
+
+// Get data for the detail page and render
+async function showSearch (id) {
+    const comic = await getSearch(id);    
+    render.comic(comic);
+}
+
+// fetch data and find the correct comic with id
+async function getSearch (id) {
+    const searchEndpoint = createSearchDetailEndpoint(id);
+    const search = await fetchData(searchEndpoint);
+    const findData = search.find(data => data.id == id);
+    console.log(search);
     return findData;
     // https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d
 }
@@ -135,5 +156,6 @@ export {
     init,
     showAllComics,
     showComic,
+    showSearch,
     showAllCharacters
 };
